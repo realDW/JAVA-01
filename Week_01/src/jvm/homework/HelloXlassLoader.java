@@ -34,14 +34,23 @@ public class HelloXlassLoader extends ClassLoader {
     }
 
     private byte[] getBytesFromFile() {
+        FileInputStream is = null;
         try {
             File file = new File("src/jvm/homework/resource/Hello.xlass");
-            FileInputStream is = new FileInputStream(file);
+            is = new FileInputStream(file);
             byte[] bytes = new byte[is.available()];
             is.read(bytes);
             return bytes;
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return new byte[0];
     }
