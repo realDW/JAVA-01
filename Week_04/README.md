@@ -1,4 +1,4 @@
-####第7课作业
+#### 第7课作业
 
 见code
 
@@ -28,4 +28,4 @@
 
 4. 把多线程和并发相关知识带你梳理一遍，画一个脑图，截图上传到 Github上。
 
-![image-20210206183102504](/Users/daiwei/study/java-homework-repo/JAVA-01/Week_04/img/thread_mind.png)
+![image-20210206183102504](./img/thread_mind.png)
