@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:school="http://spring.daiwei.io/schema/school"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://spring.daiwei.io/schema/school
+        http://spring.daiwei.io/schema/school.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <school:student id="queen-cersei" stuId="1" stuAddr="red keep in king's landing" stuName="Cersei"/>
+
+    <school:student id="bastard-snow" stuName="jon-snow" stuId="2" stuAddr="winter fell in north" />
+    
+    <school:klass id="kings-landing" grade="1" klassNo="ks-1" monitor="queen-cersei"/>
+
+    <school:klass id="winter-fell" grade="2" klassNo="wf-2" monitor="bastard-snow"/>
+
+    <util:list id="klass-list" list-class="java.util.ArrayList" value-type="io.daiwei.springxml.entity.Klass">
+        <ref bean="kings-landing"/>
+        <ref bean="winter-fell"/>
+    </util:list>
+
+    <school:school id="game-of-thrones" klassList="klass-list" schoolName="game-of-thrones"/>
+
+</beans>

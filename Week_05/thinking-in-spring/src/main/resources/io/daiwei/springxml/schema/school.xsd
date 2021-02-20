@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://spring.daiwei.io/schema/school"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tool="http://www.springframework.org/schema/tool"
+            targetNamespace="http://spring.daiwei.io/schema/school"
+>
+
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.springframework.org/schema/tool" schemaLocation="https://www.springframework.org/schema/tool/spring-tool.xsd"/>
+
+    <xsd:complexType name="Student">
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="stuName" type="xsd:string" use="required"/>
+        <xsd:attribute name="stuAddr" type="xsd:string"/>
+        <xsd:attribute name="stuId" type="xsd:long" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="Klass">
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="grade" type="xsd:int" use="required"/>
+        <xsd:attribute name="klassNo" type="xsd:string" use="required"/>
+        <xsd:attribute name="monitor" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="School">
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="schoolName" type="xsd:string"/>
+        <xsd:attribute name="klassList" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="student" type="Student"/>
+
+    <xsd:element name="klass" type="Klass"/>
+
+    <xsd:element name="school" type="School"/>
+</xsd:schema>
