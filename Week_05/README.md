@@ -1,4 +1,4 @@
-####代码目录结构
+#### 代码目录结构
 
 ​	thinking-in-jdbc   JDBC 有关作业简单编写了 JDBC 原生接口和 PrepareStatement 操作 批处理，整合 Hikari 数据库连接池  
 
