@@ -1,6 +1,6 @@
 #### 代码目录结构
 
-​	thinking-in-jdbc   JDBC 有关作业简单编写了 JDBC 原生接口和 PrepareStatement 操作 批处理，整合 Hikari 数据库连接池  
+​	[thinking-in-jdbc](https://github.com/realDW/JAVA-01/tree/main/Week_05/thinking-in-jdbc/src/main/java/io/daiwei/jdbc)   JDBC 有关作业简单编写了 JDBC 原生接口和 PrepareStatement 操作 批处理，整合 Hikari 数据库连接池  
 
 ​			｜—pojo 实体包
 
@@ -8,7 +8,7 @@
 
 ​			｜—test 操作数据库方法
 
-​	thinking-in-spring  spring 有关作业
+​	[thinking-in-spring](https://github.com/realDW/JAVA-01/tree/main/Week_05/thinking-in-spring/src/main/java/io/daiwei)  spring 有关作业
 
 ​			｜— aop 基于 cglib 实现的简单的 aop
 
@@ -20,4 +20,5 @@
 
 ​	thinking-in-spring-entity 实体类包
 
-​	thinking-in-spring-starter 自动装配student/Klass/school 的starter，目前装配参数是写死的，通过properties 或者 yaml 文件装配还在学习中。。。
+​	[thinking-in-spring-starter](https://github.com/realDW/JAVA-01/tree/main/Week_05/thinking-in-spring-starter/src/main) 自动装配student/Klass/school 的starter，目前装配参数是写死的，通过properties 或者 yaml 文件装配还在学习中。。。
+
