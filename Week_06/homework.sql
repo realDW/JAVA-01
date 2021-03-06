@@ -1,7 +1,3 @@
-## 基于电商场景的表结构设计
-
-```sql
-
 
 
 create table tb_user (
@@ -95,5 +91,3 @@ create table tb_express (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='物流表';
 
-
-```

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.daiwei.multids.mapper.UserMapper">
+    <select id="selectUser" parameterType="int" resultType="io.daiwei.multids.pojo.User">
+        select id, username, gender, addr from user where id=#{studId}
+    </select>
+
+    <insert id="insertUser" parameterType="io.daiwei.multids.pojo.User">
+        insert into User(username, gender, addr) values(#{username}, #{gender}, #{addr})
+    </insert>
+</mapper>
