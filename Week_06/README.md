@@ -95,5 +95,4 @@ create table tb_express (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='物流表';
 
-
 ```
