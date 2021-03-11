@@ -1,0 +1,26 @@
+spring:
+  shardingsphere:
+    enabled: true
+    datasource:
+      names: master,slave
+      master:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3316/test
+        username: root
+        password: 123456
+      slave:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3326/test
+        username: root
+        password: 123456
+    masterslave:
+      master-data-source-name: master
+      load-balance-algorithm-type: round_robin
+      slave-data-source-names: slave
+    props:
+      sql.show: true
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
