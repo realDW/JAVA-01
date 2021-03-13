@@ -1,0 +1,36 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds1
+        username: root
+        password: 123456
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds2
+        username: root
+        password: 123456
+    sharding:
+      default-database-strategy:
+#        inline:
+#          sharding-column: good_id
+#          algorithm-expression: ds$->{good_id/18 % 2} (nope)
+
+        standard:
+          sharding-column: good_id
+          precise-algorithm-class-name: io.daiwei.shardingjdbc.config.DSShardingAlgo
+      tables:
+        tb_order:
+          actual-data-nodes: ds${0..1}.tb_order_${0..17}
+          table-strategy:
+            inline:
+              sharding-column: user_id
+              algorithm-expression: tb_order_$->{user_id % 18}
+    props:
+      sql.show: true
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml

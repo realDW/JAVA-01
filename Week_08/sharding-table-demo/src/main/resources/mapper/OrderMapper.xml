@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.daiwei.shardingjdbc.mapper.OrderMapper">
+    <resultMap id="baseMap" type="io.daiwei.shardingjdbc.pojo.Order">
+        <result column="creater_id" property="creatorId"/>
+        <result column="updater_id" property="updaterId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="good_id" property="goodId"/>
+        <result column="user_id" property="userId"/>
+        <result column="express_id" property="expressId"/>
+        <result column="actual_price" property="actualPrice"/>
+        <result column="order_code" property="orderCode"/>
+        <result column="order_time" property="orderTime"/>
+        <result column="good_status" property="goodStatus"/>
+    </resultMap>
+
+    <sql id="base_column">
+        id, creater_id, updater_id, create_time, update_time, is_deleted, good_id,
+                             user_id, express_id, actual_price, order_code, good_status, order_time
+    </sql>
+
+    <insert id="insertOrder" parameterType="io.daiwei.shardingjdbc.pojo.Order">
+        insert into tb_order(creater_id, updater_id, create_time, update_time, is_deleted, good_id,
+                             user_id, express_id, actual_price, order_code, good_status, order_time) values
+        (999, 666, NOW(), NOW(), false, #{goodId},
+         #{userId}, #{expressId}, #{actualPrice}, #{orderCode}, 1, #{orderTime});
+    </insert>
+
+    <insert id="insertBatch" parameterType="io.daiwei.shardingjdbc.pojo.Order">
+        insert into tb_order(creater_id, updater_id, create_time, update_time, is_deleted, good_id,
+                             user_id, express_id, actual_price, order_code, good_status, order_time) values
+        <foreach collection="list" item="order" separator=",">
+            (999, 666, NOW(), NOW(), false, #{order.goodId},
+            #{order.userId}, #{order.expressId}, #{order.actualPrice}, #{order.orderCode}, 1, #{order.orderTime})
+        </foreach>
+    </insert>
+
+    <select id="selectByUserId" parameterType="long" resultMap="baseMap">
+        select <include refid="base_column"/> from tb_order where is_deleted = 0 and user_id = #{userId}
+    </select>
+
+    <select id="selectByOrderId" parameterType="long" resultMap="baseMap">
+        select <include refid="base_column"/> from tb_order where is_deleted = 0 and good_id = #{goodId}
+    </select>
+
+    <select id="selectLimit100" resultMap="baseMap">
+        select <include refid="base_column"/> from tb_order where is_deleted = 0 order by good_id desc limit ${idx}, 100;
+    </select>
+
+    <update id="delOrder" parameterType="long">
+        update tb_order set is_deleted = true where good_id = #{orderId} and user_id = #{userId}
+    </update>
+</mapper>
